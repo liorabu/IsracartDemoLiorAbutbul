@@ -12,7 +12,6 @@ import {
 import BottomTabNavigator from './src/navigators/BottomTabNavigator';
 
 function App() {
-
   return (
     <SafeAreaProvider>
       <NavigationContainer>
