@@ -1,4 +1,5 @@
-import { createSlice, isFulfilled, isRejected, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, isFulfilled, isPending, isRejected, PayloadAction } from '@reduxjs/toolkit';
+import { fetchBooksAsync } from '../actions/books';
 
 
 type BooksSlice = {
@@ -22,18 +23,26 @@ export const booksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    .addCase(fetchBooksAsync.fulfilled, (state, action:PayloadAction<FetchBooksResponseProps[]>) => {
+      state.booksList = action.payload;
+    } )
+    .addMatcher(isFulfilled, (state) => {
+        state.isLoading = false;
+      })
      .addMatcher(isFulfilled, (state) => {
         state.isLoading = false;
       })
       .addMatcher(isRejected, (state) => {
         state.isLoading = false;
-      });
+      })
+      .addMatcher(isPending, (state)=>{
+         state.isLoading = true;
+      })
     }
 });
 
-// export const {
-//   increaseAlertsTotalCount,
-//   resetAlertsCenter,
-// } = alertsCenterSlice.actions;
+export const {
+  setBooks,
+} = booksSlice.actions;
 
 export default booksSlice.reducer;
