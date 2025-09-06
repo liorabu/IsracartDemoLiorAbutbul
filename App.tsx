@@ -12,7 +12,7 @@ import {
 import BottomTabNavigator from './src/navigators/BottomTabNavigator';
 import { Provider } from 'react-redux';
 import { setupStore } from './src/store/store';
-
+import './src/language/i18n.config';
 const store = setupStore();
 
 

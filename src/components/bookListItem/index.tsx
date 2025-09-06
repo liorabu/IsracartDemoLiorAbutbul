@@ -21,10 +21,10 @@ const {navigate} = useNavigation<BooksNavigationProp>()
                     <Text>{book.releaseDate}</Text>
                 </View>
                 <Image
-                source={{ uri: book.cover }}  
-                style={styles.imageStyle}
-                resizeMode="cover" 
-            />
+                    source={{ uri: book.cover }}  
+                    style={styles.imageStyle}
+                    resizeMode="cover" 
+                />
             </View>
     </Pressable> 
     )
